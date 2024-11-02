@@ -19,7 +19,7 @@ return new class extends Migration
             $table->unsignedBigInteger('student_id');
             $table->enum('status', ['0'], ['1'])->default('0');
             $table->timestamps();
-
+            // this is relationship table
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('student_id')->references('id')->on('students');
         });

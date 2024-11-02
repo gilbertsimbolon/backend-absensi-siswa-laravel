@@ -20,7 +20,7 @@ return new class extends Migration
             $table->unsignedBigInteger('teacher_id');
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
-
+            // this is relationship table
             $table->foreign('class_of_student_id')->references('id')->on('class_of_students');
             $table->foreign('teacher_id')->references('id')->on('class_of_students');
             $table->foreign('user_id')->references('id')->on('class_of_students');

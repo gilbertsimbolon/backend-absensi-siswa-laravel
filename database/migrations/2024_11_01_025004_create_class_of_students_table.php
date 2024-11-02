@@ -17,6 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('teacher_id');
             $table->string('class_name');
             $table->timestamps();
+            // This is relationship table
             $table->foreign('teacher_id')->references('id')->on('teachers');
         });
     }

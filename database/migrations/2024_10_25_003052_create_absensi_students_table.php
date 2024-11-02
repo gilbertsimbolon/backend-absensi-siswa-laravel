@@ -20,9 +20,9 @@ return new class extends Migration
             $table->string('status');
             $table->string('note');
             $table->string('qr_code');
-            $table->string('time_in');
-            $table->string('time_out');
-            // $table->timestamps();
+            // $table->string('time_in');
+            // $table->string('time_out');
+            $table->timestamps();
         });
     }
 
