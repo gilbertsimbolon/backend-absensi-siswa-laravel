@@ -17,21 +17,18 @@ class TeacherSeeder extends Seeder
      */
     public function run(): void
     {
-        $faker = Factory::create('id_ID');
-        for ($i=0; $i < 5; $i++){
-            Teacher::create([
-                'nip' => $faker -> ean8(),
-                'name'=>$faker->name,
-                'concent'=>$faker->randomElement('Matematika', 'Kimia', 'Fisika'),
-                'phone'=>$faker->phoneNumber(),
-                'email'=>$faker->email(),
-                'gender'=>$faker->randomElement('Pria', 'Wanita'),
-                'place_born'=>$faker->city(),
-                'date_born'=>$faker->date(),
-                'address'=>$faker->address(),
-                'foto'=>$faker->image(640, 460),
-                'qr_code'=>$faker->ean13(),
-            ]);
-        }
+        DB::table('teachers')->insert([
+            'nip' => '1',
+            'name' => 'Maria Marcelona Simbolon',
+            'concent' => 'Matematika',
+            'phone' => '081234567980',
+            'email' => 'mariamarcelona@gmail.com',
+            'gender' => 'Wanita',
+            'place_born' => 'Kota Medan',
+            'date_born' => '2 Juli 2000',
+            'address' => 'Medan Amplas',
+            'foto' => 'None',
+            'qr_code' => 'None',
+        ]);
     }
 }
