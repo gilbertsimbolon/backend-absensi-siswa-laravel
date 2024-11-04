@@ -13,15 +13,15 @@ return new class extends Migration
     {
         Schema::create('absensi_teachers', 
         function (Blueprint $table) {
-            // $table->id();
-            $table->string('nip')->primary();
+            $table->id();
+            $table->integer('nip');
             $table->date('date');
             $table->string('status');
             $table->string('note');
             $table->string('qr_code');
-            $table->string('time_in');
-            $table->string('time_out');
-            // $table->timestamps();
+            // $table->string('time_in');
+            // $table->string('time_out');
+            $table->timestamps();
         });
     }
 

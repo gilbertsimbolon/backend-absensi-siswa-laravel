@@ -14,8 +14,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('absensi_students', function (Blueprint $table) {
-            // $table->id();
-            $table->string('nisn')->primary();
+            $table->id();
+            $table->integer('nisn');
             $table->date('date');
             $table->string('status');
             $table->string('note');

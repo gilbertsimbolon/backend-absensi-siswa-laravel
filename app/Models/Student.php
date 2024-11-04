@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Teacher extends Model
+class Student extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'nip',
+        'nisn',
         'name',
-        'concent',
+        'class',
         'phone',
         'email',
         'gender',
@@ -20,11 +20,5 @@ class Teacher extends Model
         'date_born',
         'address',
         'foto',
-        'qr_code',
     ];
-    
-    // Relasi One to One ClassOfStudent - Teacher
-    public function classofstudent(){
-        return $this->belongsTo(ClassOfStudent::class);
-    }
 }

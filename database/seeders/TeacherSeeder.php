@@ -2,13 +2,13 @@
 
 namespace Database\Seeders;
 
-use Faker\Factory;
+use Faker\Factory as Faker;
 use App\Models\Teacher;
 use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-// use Illuminate
+use Illuminate\Database\QueryException;
 
 class TeacherSeeder extends Seeder
 {
@@ -17,18 +17,22 @@ class TeacherSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('teachers')->insert([
-            'nip' => '1',
-            'name' => 'Maria Marcelona Simbolon',
-            'concent' => 'Matematika',
-            'phone' => '081234567980',
-            'email' => 'mariamarcelona@gmail.com',
-            'gender' => 'Wanita',
-            'place_born' => 'Kota Medan',
-            'date_born' => '2 Juli 2000',
-            'address' => 'Medan Amplas',
-            'foto' => 'None',
-            'qr_code' => 'None',
-        ]);
+        $faker = Faker::create('id_ID');
+
+        for ($i=1; $i < 10; $i++){
+            DB::table('teachers')->insert([
+                'nip' => $faker->randomNumber(2),
+                'name' => $faker->name,
+                'concent' => $faker->randomElement(['Matematika', 'Fisika', 'Kimia', 'Biologi']),
+                'phone' => $faker->phoneNumber,
+                'email' => $faker->email,
+                'gender' => $faker->randomElement(['Laki-laki', 'Perempuan']),
+                'place_born' => $faker->city,
+                'date_born' => $faker->date,
+                'address' => $faker->address,
+                'foto' => $faker->image,
+                'qr_code' => $faker->ean13,
+            ]);
+        }
     }
 }
