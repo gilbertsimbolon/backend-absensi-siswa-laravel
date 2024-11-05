@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('absensi_students', function (Blueprint $table) {
             $table->id();
-            $table->integer('nisn');
-            $table->date('date');
+            $table->string('nisn');
+            $table->string('date');
             $table->string('status');
             $table->string('note');
             $table->string('qr_code');

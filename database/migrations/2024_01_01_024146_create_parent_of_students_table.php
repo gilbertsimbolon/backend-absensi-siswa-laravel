@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('mother_name');
             $table->string('father_name');
-            $table->integer('kk_number');
-            $table->integer('phone');
+            $table->string('kk_number');
+            $table->string('phone');
             $table->string('address');
             $table->string('email');
             $table->string('password');

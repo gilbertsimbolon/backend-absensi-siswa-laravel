@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('absensi_teachers', 
         function (Blueprint $table) {
             $table->id();
-            $table->integer('nip');
-            $table->date('date');
+            $table->string('nip');
+            $table->string('date');
             $table->string('status');
             $table->string('note');
             $table->string('qr_code');

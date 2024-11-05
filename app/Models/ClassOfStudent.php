@@ -10,7 +10,11 @@ class ClassOfStudent extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['teacher_id', 'class_name'];
+    protected $fillable = [
+        'name',
+        'teacher_id', 
+        'class_name',
+    ];
 
     // Relasi One To One
     public function teacher(){
