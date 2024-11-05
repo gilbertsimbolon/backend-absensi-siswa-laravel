@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('class_of_students', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            // $table->string('name');
             $table->unsignedBigInteger('teacher_id');
             $table->string('class_name');
             $table->timestamps();

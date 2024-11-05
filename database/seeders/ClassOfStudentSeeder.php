@@ -21,7 +21,7 @@ class ClassOfStudentSeeder extends Seeder
             $teachers_id = Teacher::pluck('id')->random();
 
             DB::table('class_of_students')->insert([
-                'name' => $faker->name,
+                // 'name' => $faker->name,
                 'teacher_id' => $teachers_id,
                 'class_name' => $faker->randomElement(['9-1', '9-2']),
             ]);

@@ -11,7 +11,7 @@ class ClassOfStudent extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name',
+        // 'name',
         'teacher_id', 
         'class_name',
     ];

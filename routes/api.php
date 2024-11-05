@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ClassOfStudentController;
 use App\Http\Controllers\TeacherController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -9,3 +10,4 @@ use Illuminate\Support\Facades\Route;
 // })->middleware('auth:sanctum');
 
 Route::get('/teacher', [TeacherController::class, 'index']);
+Route::get('/class-of-students', [ClassOfStudentController::class, 'index']);
