@@ -20,5 +20,6 @@ class Student extends Model
         'date_born',
         'address',
         'foto',
+        'qr_code'
     ];
 }
