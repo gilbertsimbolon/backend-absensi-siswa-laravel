@@ -9,6 +9,17 @@ use Illuminate\Http\Request;
 class TeacherController extends Controller
 {
     public function index(){
-        return response()->json(Teacher::all(), 200);
+        $teachers = Teacher::all();
+        return $this->sendSuccessResponse($teachers, 'Teachers retrieved successfully');
+    }
+
+    // return success response
+    public function sendSuccessResponse($result, $message){
+        $response = [
+            'success' => true,
+            'data' => $result,
+            'message' => $message,
+        ];
+        return response()->json($response, 200);
     }
 }

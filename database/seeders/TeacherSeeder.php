@@ -17,22 +17,6 @@ class TeacherSeeder extends Seeder
      */
     public function run(): void
     {
-        $faker = Faker::create('id_ID');
-
-        for ($i=1; $i < 10; $i++){
-            DB::table('teachers')->insert([
-                'nip' => $faker->randomNumber(2),
-                'name' => $faker->name,
-                'concent' => $faker->randomElement(['Matematika', 'Fisika', 'Kimia', 'Biologi']),
-                'phone' => $faker->phoneNumber,
-                'email' => $faker->email,
-                'gender' => $faker->randomElement(['Laki-laki', 'Perempuan']),
-                'place_born' => $faker->city,
-                'date_born' => $faker->date,
-                'address' => $faker->address,
-                'foto' => $faker->image,
-                'qr_code' => $faker->ean13,
-            ]);
-        }
+        Teacher::factory(10)->create();
     }
 }

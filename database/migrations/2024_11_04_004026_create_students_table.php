@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('date_born');
             $table->string('address');
             $table->string('foto'); //nullable
-            $table->string('qr_code');
+            // $table->string('qr_code');
             $table->timestamps();
         });
     }

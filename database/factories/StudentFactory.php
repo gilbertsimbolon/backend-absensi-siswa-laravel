@@ -3,12 +3,11 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Process\FakeProcessResult;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Teacher>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Student>
  */
-class TeacherFactory extends Factory
+class StudentFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,11 +17,11 @@ class TeacherFactory extends Factory
     public function definition(): array
     {
         return [
-            'nip' => fake() -> randomNumber(),
-            'name' => fake() -> name,
-            'concent' => fake() -> randomElement(['Biologi', 'Fisika', 'Kimia']),
+            'nisn' => fake() -> randomNumber(),
+            'name' => fake() -> name(),
+            'class' => fake() -> randomElement(['9-1', '9-2', '9-3']),
             'phone' => fake() -> phoneNumber(),
-            'email' => fake() -> unique()->safeEmail(),
+            'email' => fake() -> unique() -> safeEmail(),
             'gender' => fake() -> randomElement(['Pria', 'Wanita']),
             'place_born' => fake() -> city(),
             'date_born' => fake() -> date(),
