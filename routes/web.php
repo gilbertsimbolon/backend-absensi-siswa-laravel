@@ -9,3 +9,6 @@ Route::get('/', function () {
 });
 
 Route::get('/teacher', [TeacherController::class, 'index']);
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
