@@ -3,6 +3,11 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Schedule;
+use App\Models\Announcement;
+use App\Models\StudentAbsence;
+use App\Models\TeacherAbsence;
+use App\Models\Extracurricular;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -46,11 +51,23 @@ class User extends Authenticatable
         ];
     }
 
-    // user ke announcement relasi one to one
-
-    // student relasi one to many
+    public function announcements(){
+        return $this->hasMany(Announcement::class);
+    }
 
     public function extracurrirulars(){
         return $this->hasMany(Extracurricular::class);
+    }
+
+    public function student_absences(){
+        return $this->hasMany(StudentAbsence::class);
+    }
+
+    public function teacher_absences(){
+        return $this->hasMany(TeacherAbsence::class);
+    }
+
+    public function shedules(){
+        return $this->hasMany(Schedule::class);
     }
 }

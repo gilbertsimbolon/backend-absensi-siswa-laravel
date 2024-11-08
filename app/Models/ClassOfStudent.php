@@ -17,17 +17,16 @@ class ClassOfStudent extends Model
         'teacher_id', 
         'class_name',
     ];
-
-    // Relasi One To One
+    
     public function teacher(){
         return $this->belongsTo(Teacher::class);
     }
 
     public function student(){
-        return $this->belongsTo(Student::class);
+        return $this->hasMany(Student::class);
     }
 
     public function schedules(){
-        return $this->hasMany(Schedule::class);
+        return $this->belongsTo(Schedule::class);
     }
 }

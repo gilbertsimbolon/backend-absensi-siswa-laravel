@@ -26,6 +26,10 @@ return new class extends Migration
             $table->string('foto'); //nullable
             // $table->string('qr_code');
             $table->timestamps();
+
+            // this is relationship table
+            $table->foreign('parent_id')->references('id')->on('parent_of_students');
+            $table->foreign('class_of_student_id')->references('id')->on('class_of_students');
         });
     }
 

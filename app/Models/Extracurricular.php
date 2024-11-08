@@ -2,8 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\User;
+use App\Models\Student;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Teacher;
 
 class Extracurricular extends Model
 {
@@ -22,7 +25,11 @@ class Extracurricular extends Model
         return $this->hasMany(Student::class);
     }
 
-    public function  user(){
+    public function users(){
         return $this->belongsTo(User::class);
     }
+
+    public function teachers(){
+        return $this->belongsTo(Teacher::class);
+    } 
 }

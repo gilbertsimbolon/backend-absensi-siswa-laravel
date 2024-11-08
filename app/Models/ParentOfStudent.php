@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Student;
 use Illuminate\Database\Eloquent\Model;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Notifications\Notifiable;
@@ -22,7 +23,9 @@ class ParentOfStudent extends Authenticatable implements JWTSubject
         'password',
     ];
 
-    // public function 
+    public function students(){
+        return $this->belongsTo(Student::class);
+    }
 
     public function getJWTIdentifier(){
         return $this->getKey();

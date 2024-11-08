@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('extracurriculars', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('class_of_student_id');
+            $table->unsignedBigInteger('students_id');
             $table->string('days');
             $table->string('time');
             $table->string('activity');
@@ -21,9 +21,9 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
             // this is relationship table
-            $table->foreign('class_of_student_id')->references('id')->on('class_of_students');
-            $table->foreign('teacher_id')->references('id')->on('class_of_students');
-            $table->foreign('user_id')->references('id')->on('class_of_students');
+            $table->foreign('students_id')->references('id')->on('students');
+            $table->foreign('teacher_id')->references('id')->on('teachers');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
