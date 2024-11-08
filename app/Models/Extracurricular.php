@@ -17,4 +17,12 @@ class Extracurricular extends Model
         'time',
         'activity',
     ];
+
+    public function students(){
+        return $this->hasMany(Student::class);
+    }
+
+    public function  user(){
+        return $this->belongsTo(User::class);
+    }
 }

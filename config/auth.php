@@ -40,6 +40,11 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'api_parent_of_students' => [
+            'driver' => 'jwt',
+            'provider' => 'parentofstudents',
+            'hash' => 'false',
+        ]
     ],
 
     /*
@@ -63,6 +68,11 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => env('AUTH_MODEL', App\Models\User::class),
+        ],
+    
+        'parentofstudents' => [
+            'driver' => 'eloquent',
+            'model' => \App\Models\ParentOfStudent::class,
         ],
 
         // 'users' => [

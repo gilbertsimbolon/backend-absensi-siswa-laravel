@@ -23,9 +23,15 @@ class Teacher extends Model
         'foto',
         'qr_code',
     ];
+
+    //shedule has many
     
     // Relasi One to One ClassOfStudent - Teacher
-    public function classofstudent(){
+    public function classofstudents(){
         return $this->belongsTo(ClassOfStudent::class);
+    }
+
+    public function extracurrirulars(){
+        return $this->belongsTo(Extracurricular::class);
     }
 }

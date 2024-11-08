@@ -15,8 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('nisn'); //primary
             $table->string('name');
-            $table->string('class');
+            $table->unsignedInteger('parent_id');
             $table->string('phone');
+            $table->unsignedBigInteger('class_of_student_id');
             $table->string('email'); //unique
             $table->string('gender');
             $table->string('place_born');

@@ -45,4 +45,12 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    // user ke announcement relasi one to one
+
+    // student relasi one to many
+
+    public function extracurrirulars(){
+        return $this->hasMany(Extracurricular::class);
+    }
 }

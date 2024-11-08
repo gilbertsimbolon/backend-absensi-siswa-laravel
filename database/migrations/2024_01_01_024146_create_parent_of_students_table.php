@@ -20,8 +20,9 @@ return new class extends Migration
             $table->string('kk_number');
             $table->string('phone');
             $table->string('address');
-            $table->string('email');
+            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->rememberToken();
             $table->timestamps();
         });
     }
