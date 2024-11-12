@@ -7,7 +7,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
-class AuthController extends Controller
+use function Laravel\Prompts\alert;
+
+class UserController extends Controller
 {
     public function showLoginForm(){
         return view('auth.login');
@@ -36,6 +38,10 @@ class AuthController extends Controller
         ]);
     }
 
+    public function showRegistrationForm(){
+        return view('auth.register');
+    }
+
     // fungsi register user
     public function register(Request $request){
         $validateData = Validator::make($request->all(), [
@@ -58,12 +64,14 @@ class AuthController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        $token = $user->createToken('auth_token')->plainTextToken;
+        return redirect()->route('login');
 
-        return response()->json([
-            'message' => 'User successfully registered',
-            'user' => $user,
-            'token' => $token
-        ], 201);
+        // $token = $user->createToken('auth_token')->plainTextToken;
+
+        // return response()->json([
+        //     'message' => 'User successfully registered',
+        //     'user' => $user,
+        //     // 'token' => $token
+        // ], 201);
     }
 }

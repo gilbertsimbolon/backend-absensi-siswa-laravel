@@ -6,6 +6,7 @@ use Illuminate\Database\Query\IndexHint;
 use App\Http\Controllers\TeacherController;
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Middleware\ParentMiddleware;
+use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -13,13 +14,16 @@ Route::get('/', function () {
 
 Auth::routes(['register' => false]);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::prefix('/user')->group(function (){
+    Route::get('/home', [UserController::class, 'index'])->name('home');
+    Route::get('registrasi', [UserController::class, 'showRegistrationForm'])->name('register');
+    Route::post('/registrasi', [UserController::class, 'register']);
+})->middleware('auth:sanctum');
 
+// Route::middleware([AdminMiddleware::class])->group(function(){
+//     Route::get('/admin/dashboard', [AdminMiddleware::class, 'index']);
+// });
 
-Route::middleware([AdminMiddleware::class])->group(function(){
-    Route::get('/admin/dashboard', [AdminMiddleware::class, 'index']);
-});
-
-Route::middleware(ParentMiddleware::class)->group(function(){
-    Route::get('/parent/dashboard', [ParentMiddleware::class, 'dashboard']);
-});
+// Route::middleware(ParentMiddleware::class)->group(function(){
+//     Route::get('/parent/dashboard', [ParentMiddleware::class, 'dashboard']);
+// });
