@@ -14,11 +14,11 @@ Route::get('/', function () {
 
 Auth::routes(['register' => false]);
 
-Route::prefix('/user')->group(function (){
-    Route::get('/home', [UserController::class, 'index'])->name('home');
-    Route::get('registrasi', [UserController::class, 'showRegistrationForm'])->name('register');
-    Route::post('/registrasi', [UserController::class, 'register']);
-})->middleware('auth:sanctum');
+// Route::prefix('/user')->group(function (){
+//     Route::get('/home', [UserController::class, 'index'])->name('home');
+//     Route::get('registrasi', [UserController::class, 'showRegistrationForm'])->name('register');
+//     Route::post('/registrasi', [UserController::class, 'register']);
+// })->middleware('auth:sanctum');
 
 // Route::middleware([AdminMiddleware::class])->group(function(){
 //     Route::get('/admin/dashboard', [AdminMiddleware::class, 'index']);

@@ -24,11 +24,13 @@ Route::get('/test-api', function () {
 //     return $request->user();
 // })->middleware('auth:sanctum');
 
-Route::prefix('/user')->group(function (){
-    Route::get('/login', [UserController::class, 'login']);
-    Route::post('/register', [UserController::class, 'register']);
-})->middleware('auth:sanctum');
-
+Route::group(['middleware' => 'api', 'prefix' => 'auth'], function ($router) {
+    Route::post('login', [AuthController::class, 'login']);
+    Route::post('register', [AuthController::class, 'register']);
+    Route::post('logout', [AuthController::class, 'logout']);
+    Route::post('refresh', [AuthController::class, 'refresh']);
+    Route::post('me', [AuthController::class, 'me']);
+});
 
 Route::prefix('/parent-of-students')->group(function (){
     Route::get('/parent-login', [ParentOfStudentController::class, 'login']);
