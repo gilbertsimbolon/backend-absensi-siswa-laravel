@@ -13,6 +13,8 @@ class ParentOfStudent extends Authenticatable implements JWTSubject
 {
     use HasFactory, Notifiable;
 
+    protected $table = 'parent_of_students';
+    
     protected $fillable = [
         'mother_name',
         'father_name',

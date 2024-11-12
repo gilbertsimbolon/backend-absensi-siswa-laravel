@@ -46,7 +46,7 @@ return [
         ],
         'api_parent_of_students' => [
             'driver' => 'jwt',
-            'provider' => 'parentofstudents',
+            'provider' => 'parent_of_students',
             'hash' => 'false',
         ]
     ],
@@ -74,7 +74,7 @@ return [
             'model' => env('AUTH_MODEL', App\Models\User::class),
         ],
     
-        'parentofstudents' => [
+        'parent_of_students' => [
             'driver' => 'eloquent',
             'model' => \App\Models\ParentOfStudent::class,
         ],

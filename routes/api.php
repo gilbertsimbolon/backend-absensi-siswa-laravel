@@ -32,8 +32,11 @@ Route::group(['middleware' => 'api', 'prefix' => 'auth'], function ($router) {
     Route::post('me', [AuthController::class, 'me']);
 });
 
-Route::prefix('/parent-of-students')->group(function (){
-    Route::get('/parent-login', [ParentOfStudentController::class, 'login']);
-    Route::post('/parent-register', [ParentOfStudentController::class, 'store']);
-})->middleware('auth:sanctum');
+Route::group(['middleware' => 'api', 'prefix' => 'parent'], function ($router) {
+    Route::post('login', [ParentOfStudentController::class, 'login']);
+    Route::post('register', [ParentOfStudentController::class, 'register']);
+    Route::post('logout', [ParentOfStudentController::class, 'logout']);
+    Route::post('refresh', [ParentOfStudentController::class, 'refresh']);
+    Route::post('me', [ParentOfStudentController::class, 'me']);
+});
 // Route::post('/parent', [ParentOfStudentController::class, 'store']);
