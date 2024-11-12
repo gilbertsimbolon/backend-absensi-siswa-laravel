@@ -25,11 +25,6 @@ class User extends Authenticatable implements JWTSubject
      *
      * @var array<int, string>
      */
-    public function getJWTIdentifier()
-    {
-        return $this->getKey();
-    }
-
     protected $fillable = [
         'name',
         'email',
@@ -47,16 +42,30 @@ class User extends Authenticatable implements JWTSubject
     ];
 
     /**
+     * Get the JWT identifier.
+     *
+     * @return int
+     */
+    public function getJWTIdentifier()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Get the JWT custom claims.
+     *
+     * @return array
+     */
+    public function getJWTCustomClaims()
+    {
+        return []; // You can add custom claims here if needed
+    }
+
+    /**
      * Get the attributes that should be cast.
      *
      * @return array<string, string>
      */
-
-    public function getJWTCustomClaims()
-    {
-        
-    }
-
     protected function casts(): array
     {
         return [
