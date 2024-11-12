@@ -8,12 +8,15 @@ use App\Models\Announcement;
 use App\Models\StudentAbsence;
 use App\Models\TeacherAbsence;
 use App\Models\Extracurricular;
+use Spatie\Permission\Models\Role;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Spatie\Permission\Middleware\RoleOrPermissionMiddleware;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class User extends Authenticatable
+class User extends Authenticatable implements JWTSubject
 {
     use HasFactory, Notifiable, HasRoles;
 
@@ -22,6 +25,11 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
     protected $fillable = [
         'name',
         'email',
@@ -43,6 +51,12 @@ class User extends Authenticatable
      *
      * @return array<string, string>
      */
+
+    public function getJWTCustomClaims()
+    {
+        
+    }
+
     protected function casts(): array
     {
         return [
@@ -50,6 +64,7 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
 
     public function announcements(){
         return $this->hasMany(Announcement::class);

@@ -26,9 +26,14 @@ class ParentOfStudentResources extends JsonResource
     {
         // dd($this->resource);
         return [
-            'status' => $this->status,
-            'message' => $this->message,
-            'data' => $this->resource
+            'id' => $this->id,
+            'name' => $this->name,
+            'email' => $this->email,
+            'student_name' => $this->student->name ?? null,
+            'message' => 'Registrasi berhasil.'
+            // 'status' => $this->status,
+            // 'message' => $this->message,
+            // 'data' => $this->resource
         ];
     }
 }

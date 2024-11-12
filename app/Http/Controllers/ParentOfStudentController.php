@@ -7,6 +7,7 @@ use App\Models\ParentOfStudent;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Resources\ParentOfStudentResources;
+use ParentIterator;
 
 class ParentOfStudentController extends Controller
 {
@@ -98,5 +99,16 @@ class ParentOfStudentController extends Controller
             'message' => 'Registrasi berhasil dilakukan!',
             'data' => $parent
         ], 201);
+    }
+
+    // fungsi showDashboard()
+    public function showDashboard($parent_id){
+        $parent = ParentOfStudent::with('student')->findOrFail($parent_id);
+
+        return view('parent.dashboard', [
+            'parent' => $parent,
+            'student' => $parent->student,
+            'attendanceStatus' => $parent->student->attendanceStatus(),
+        ]);
     }
 }
