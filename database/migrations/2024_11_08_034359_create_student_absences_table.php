@@ -20,7 +20,7 @@ return new class extends Migration
 
             // this is relational table
             $table->foreign('student_id')->references('id')->on('students');
-            $table->foreign('user_id')->references('id')->on('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

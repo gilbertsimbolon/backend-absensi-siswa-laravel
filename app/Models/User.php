@@ -84,7 +84,7 @@ class User extends Authenticatable implements JWTSubject
     }
 
     public function student_absences(){
-        return $this->hasMany(StudentAbsence::class);
+        return $this->hasMany(StudentAbsence::class,'user_id');
     }
 
     public function teacher_absences(){
