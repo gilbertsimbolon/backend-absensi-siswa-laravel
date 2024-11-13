@@ -69,7 +69,14 @@ class ParentOfStudentController extends Controller
     }
 
     public function dashboard(){
-        
+        $parent = Auth::user();
+
+        $students = $parent->students;
+
+        return response()->json([
+            'message' => 'Data berhasil diambil.',
+            'students' => $students,
+        ]);
     }
 
     /**
@@ -103,6 +110,7 @@ class ParentOfStudentController extends Controller
     {
         return $this->respondWithToken(auth()->refresh());
     }
+
 
     /**
      * Get the token array structure.

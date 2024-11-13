@@ -26,7 +26,7 @@ class ParentOfStudent extends Authenticatable implements JWTSubject
     ];
 
     public function students(){
-        return $this->belongsTo(Student::class);
+        return $this->hasMany(Student::class, 'parent_id');
     }
 
     public function getJWTIdentifier(){

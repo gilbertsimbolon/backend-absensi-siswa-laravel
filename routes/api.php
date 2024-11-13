@@ -36,6 +36,7 @@ Route::group(['middleware' => 'api', 'prefix' => 'auth'], function ($router) {
 Route::group(['middleware' => 'api', 'prefix' => 'parent'], function ($router) {
     Route::post('login', [ParentOfStudentController::class, 'login']);
     Route::post('store', [ParentOfStudentController::class, 'store']);
+    Route::post('dashboard', [ParentOfStudentController::class, 'dashboard']);
     Route::post('logout', [ParentOfStudentController::class, 'logout']);
     Route::post('refresh', [ParentOfStudentController::class, 'refresh']);
     Route::post('me', [ParentOfStudentController::class, 'me']);
