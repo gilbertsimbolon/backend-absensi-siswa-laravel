@@ -17,7 +17,17 @@ class StudentSeeder extends Seeder
     public function run(): void
     {
         Student::create([
-            ''
-        ])
+            'nisn',
+            'name',
+            'parent_id',
+            'phone',
+            'class_of_students_id',
+            'email',
+            'gender',
+            'place_born',
+            'date_born',
+            'address',
+            'foto',
+        ]);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\ClassOfStudent;
 use App\Models\Teacher;
 use Faker\Factory as Faker;
 use Illuminate\Database\Seeder;
@@ -15,16 +16,17 @@ class ClassOfStudentSeeder extends Seeder
      */
     public function run(): void
     {
-        $faker = Faker::create('id_ID');
-
-        for ($i = 1; $i < 5; $i++){
-            $teachers_id = Teacher::pluck('id')->random();
-
-            DB::table('class_of_students')->insert([
-                // 'name' => $faker->name,
-                'teacher_id' => $teachers_id,
-                'class_name' => $faker->randomElement(['9-1', '9-2']),
-            ]);
-        }
+        ClassOfStudent::create([
+            'name' => '10-1',
+            'teacher_id' => 1,
+        ]);
+        ClassOfStudent::create([
+            'name' => '10-2',
+            'teacher_id' => 2,
+        ]);
+        ClassOfStudent::create([
+            'name' => '10-3',
+            'teacher_id' => 3,
+        ]);
     }
 }
