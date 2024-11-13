@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ParentOfStudent;
 use App\Http\Controllers\Controller;
+use App\Models\StudentAbsence;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -92,13 +93,31 @@ class ParentOfStudentController extends Controller
         $fullGreeting = "{$greeting} {$studentName}!";
 
         // Informasi absensi
-        
+
+        Carbon::setLocale('id');
+
+        $today = Carbon::now();
+
+        $hari = $today->isoFormat('dddd');
+
+        $student_absences = [];
+
+        // loop untuk mengambil data absensi setiap siswa dari orang tua
+        foreach ($students as $student) {
+            $absences = $student->student_absences;
+            
+            // menyusun data absensi
+            foreach ($absences as $absence) {
+                $student_absences[] = "Status kehadiran {$student->name} pada hari {$hari} adalah {$absence->present}";
+            }
+        }
 
         // mengembalikan nilai json
         return response()->json([
             'status' => true,
             // 'message' => 'Data berhasil diambil.',
             'greetings' => $fullGreeting,
+            'present' => $student_absences,
         ]);
     }
 

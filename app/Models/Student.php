@@ -32,7 +32,7 @@ class Student extends Model
     ];
 
     public function student_absences(){
-        return $this->belongsTo(StudentAbsence::class ,'student_id');
+        return $this->hasMany(StudentAbsence::class, 'student_id');
     }
 
     public function announcements(){

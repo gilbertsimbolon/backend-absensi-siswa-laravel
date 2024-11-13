@@ -12,7 +12,7 @@ class StudentAbsence extends Model
 {
     use HasFactory, Notifiable;
 
-    protected $filllable = [
+    protected $fillable = [
         'enum',
         'student_id', 
         'user_id',
@@ -21,6 +21,10 @@ class StudentAbsence extends Model
     public function students(){
         return $this->belongsTo(Student::class);
     }
+
+    // public function student_absences(){
+    //     return $this->belongsTo(StudentAbsence::class);
+    // }
 
     public function users(){
         return $this->belongsTo(User::class);
