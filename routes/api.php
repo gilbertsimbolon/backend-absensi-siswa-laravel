@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TeacherController;
-use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Api\Http\Controllers\Api\ParentOfStudent\LoginController;
 use App\Http\Resources\ParentOfStudentResources;
 use App\Http\Controllers\ClassOfStudentController;
 use App\Http\Controllers\ParentOfStudentController;
@@ -31,6 +31,11 @@ Route::group(['middleware' => 'api', 'prefix' => 'auth'], function ($router) {
     Route::post('logout', [AuthController::class, 'logout']);
     Route::post('refresh', [AuthController::class, 'refresh']);
     Route::post('me', [AuthController::class, 'me']);
+});
+
+Route::group(['middleware' => 'api', 'prefix' => 'parentofstudents'], function ($router) {
+    Route::post('login', [LoginController::class, 'index']);
+    Route::post('register', [LoginController::class, ''])
 });
 
 Route::group(['middleware' => 'api', 'prefix' => 'parent'], function ($router) {
