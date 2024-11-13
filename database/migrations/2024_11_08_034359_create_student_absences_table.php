@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('student_absences', function (Blueprint $table) {
             $table->id();
-            $table->enum('present', ['H', 'A', 'I', 'S'])->default('A');
+            $table->enum('present', ['Hadir', 'Absen', 'Izin', 'Sakit'])->default('Absen');
             $table->unsignedBigInteger('student_id'); // student id unisgh
             $table->unsignedBigInteger('user_id'); // user_id unisgh
             $table->timestamps();

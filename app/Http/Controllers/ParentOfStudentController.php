@@ -91,11 +91,13 @@ class ParentOfStudentController extends Controller
 
         $fullGreeting = "{$greeting} {$studentName}!";
 
-        // 
+        // Informasi absensi
+        
 
         // mengembalikan nilai json
         return response()->json([
-            'message' => 'Data berhasil diambil.',
+            'status' => true,
+            // 'message' => 'Data berhasil diambil.',
             'greetings' => $fullGreeting,
         ]);
     }
