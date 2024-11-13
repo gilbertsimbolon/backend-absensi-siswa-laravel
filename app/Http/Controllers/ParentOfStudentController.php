@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ParentOfStudent;
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -69,13 +70,33 @@ class ParentOfStudentController extends Controller
     }
 
     public function dashboard(){
+        // mengambil data orang tua yang sedang login
         $parent = Auth::user();
 
         $students = $parent->students;
 
+        // Comment : Greetings
+        $currentHour = Carbon::now()->format('H');
+        $greeting = '';
+
+        if($currentHour >= 5 && $currentHour < 12){
+            $greeting = 'Selamat Pagi, Orang Tua';
+        }elseif($currentHour >= 12 && $currentHour < 18){
+            $greeting = 'Selamat Siang, Orang Tua';
+        }else{
+            $greeting = 'Selamat Malam, Orang Tua';
+        }
+
+        $studentName = $students->first()->name;
+
+        $fullGreeting = "{$greeting} {$studentName}!";
+
+        // 
+
+        // mengembalikan nilai json
         return response()->json([
             'message' => 'Data berhasil diambil.',
-            'students' => $students,
+            'greetings' => $fullGreeting,
         ]);
     }
 
