@@ -17,10 +17,10 @@ class ParentOfStudentController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api_parent_of_students', ['except' => ['login', 'register']]);
+        $this->middleware('auth:api_parent_of_students', ['except' => ['login', 'store']]);
     }
 
-    public function register(){
+    public function store(){
         $validator = Validator::make(request()->all(), [
             'mother_name' => 'required|string|max:255',
             'father_name' => 'required|string|max:255',
@@ -28,7 +28,7 @@ class ParentOfStudentController extends Controller
             'phone' => 'required|string|max:15',
             'address' => 'required|string|max:255',
             'email' => 'required|string|unique:parent_of_students',
-            'password' => 'required|string|min:6'
+            'password' => 'required|string|min:6',
         ]);
 
         if($validator->fails()){
@@ -66,6 +66,10 @@ class ParentOfStudentController extends Controller
         }
 
         return $this->respondWithToken($token);
+    }
+
+    public function dashboard(){
+        
     }
 
     /**

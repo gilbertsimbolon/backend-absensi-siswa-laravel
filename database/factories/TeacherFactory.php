@@ -18,7 +18,7 @@ class TeacherFactory extends Factory
     public function definition(): array
     {
         return [
-            'nip' => fake() -> randomNumber(),
+            'nip' => fake() -> unique()-> numberBetween(0, 100),
             'name' => fake() -> name,
             'concent' => fake() -> randomElement(['Biologi', 'Fisika', 'Kimia']),
             'phone' => fake() -> phoneNumber(),
@@ -28,7 +28,7 @@ class TeacherFactory extends Factory
             'date_born' => fake() -> date(),
             'address' => fake() -> address(),
             'foto' => fake() -> image,
-            'qr_code' => fake() -> ean13(),
+            // 'qr_code' => fake() -> ean13(),
         ];
     }
 }

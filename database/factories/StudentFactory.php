@@ -17,17 +17,11 @@ class StudentFactory extends Factory
     public function definition(): array
     {
         return [
-            'nisn' => fake() -> randomNumber(),
-            'name' => fake() -> name(),
-            'class' => fake() -> randomElement(['9-1', '9-2', '9-3']),
-            'phone' => fake() -> phoneNumber(),
-            'email' => fake() -> unique() -> safeEmail(),
-            'gender' => fake() -> randomElement(['Pria', 'Wanita']),
-            'place_born' => fake() -> city(),
-            'date_born' => fake() -> date(),
-            'address' => fake() -> address(),
-            'foto' => fake() -> image,
-            'qr_code' => fake() -> ean13(),
+            'nisn' => '001',
+            'name' => 'Josep Gilbert Andriano Simbolon',
+            'parent_id' => 1,
+            'phone' => '0812324214',
+            'class_of_student_id' => '',
         ];
     }
 }

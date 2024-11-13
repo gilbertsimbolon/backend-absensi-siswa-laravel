@@ -19,8 +19,9 @@ class Student extends Model
     protected $fillable = [
         'nisn',
         'name',
-        'class',
+        'parent_id',
         'phone',
+        'class_of_student_id',
         'email',
         'gender',
         'place_born',
@@ -43,11 +44,11 @@ class Student extends Model
     }
 
     public function parent_of_students(){
-        return $this->belongsTo(ParentOfStudent::class);
+        return $this->belongsTo(ParentOfStudent::class, 'parent_id');
     }
 
     public function class_of_students(){
-        return $this->belongsTo(ClassOfStudent::class);
+        return $this->belongsTo(ClassOfStudent::class, 'class_of_student_id');
     }
     // protected function createdAt(): Attribute {
     //     return Attribute::make (

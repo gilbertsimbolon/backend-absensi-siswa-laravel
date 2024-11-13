@@ -24,7 +24,7 @@ class Teacher extends Model
         'date_born',
         'address',
         'foto',
-        'qr_code',
+        // 'qr_code',
     ];
 
     public function classofstudents(){

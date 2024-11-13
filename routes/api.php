@@ -11,6 +11,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Resources\ParentOfStudentResources;
 use App\Http\Controllers\ClassOfStudentController;
 use App\Http\Controllers\ParentOfStudentController;
+use App\Http\Controllers\StudentController;
 
 // Auth::routes(['register' => false]);
 
@@ -34,9 +35,10 @@ Route::group(['middleware' => 'api', 'prefix' => 'auth'], function ($router) {
 
 Route::group(['middleware' => 'api', 'prefix' => 'parent'], function ($router) {
     Route::post('login', [ParentOfStudentController::class, 'login']);
-    Route::post('register', [ParentOfStudentController::class, 'register']);
+    Route::post('store', [ParentOfStudentController::class, 'store']);
     Route::post('logout', [ParentOfStudentController::class, 'logout']);
     Route::post('refresh', [ParentOfStudentController::class, 'refresh']);
     Route::post('me', [ParentOfStudentController::class, 'me']);
 });
+
 // Route::post('/parent', [ParentOfStudentController::class, 'store']);
