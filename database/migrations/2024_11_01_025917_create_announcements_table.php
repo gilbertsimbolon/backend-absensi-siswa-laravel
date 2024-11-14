@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('title');
             $table->text('content');
             $table->unsignedBigInteger('student_id');
-            $table->enum('status', ['0'], ['1'])->default('0');
+            $table->enum('status', ['0'], ['1'])->default('1');
             $table->timestamps();
             // this is relationship table
             $table->foreign('user_id')->references('id')->on('users');

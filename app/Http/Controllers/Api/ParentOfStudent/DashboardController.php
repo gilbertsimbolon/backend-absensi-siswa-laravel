@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Api\ParentOfStudent;
 
-use App\Models\ParentOfStudent;
+use App\Models\Announcement;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use App\Models\ParentOfStudent;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
@@ -53,7 +54,17 @@ class DashboardController extends Controller
             }
         }
 
-        // Comment : 
+        // Comment : Informasi Announcement
+        $announcement = Announcement::where('status', 0)->latest()->get();
+
+        $announcementsData = $announcement->map(function ($item) {
+            return [
+                'title' => $item->title,
+                'content' => $item->content,
+                'created_at' => $item->created_at->isoFormat('dddd, D MMMM YYYY'),
+            ];
+        });
+        
 
         // mengembalikan nilai json
         return response()->json([
@@ -62,6 +73,7 @@ class DashboardController extends Controller
             // 'user' => $parent,
             'greetings' => $fullGreeting,
             'present' => $student_absences,
+            'announcement' => $announcementsData,
         ]);
     }
 }
