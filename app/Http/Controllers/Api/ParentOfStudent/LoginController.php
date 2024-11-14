@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\ParentOfStudent;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
+use Psy\Readline\Hoa\ProtocolException;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
 class LoginController extends Controller

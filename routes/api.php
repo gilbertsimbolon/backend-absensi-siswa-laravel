@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\ParentOfStudent\DashboardController;
 use Illuminate\Http\Request;
 use App\Models\ParentOfStudent;
 use Illuminate\Support\Facades\Auth;
@@ -38,6 +39,7 @@ Route::group(['middleware' => 'api', 'prefix' => 'parentofstudents'], function (
     Route::post('login', [LoginController::class, 'index']);
     Route::post('logout', [LoginController::class, 'logout']);
     Route::post('register', [RegisterController::class, 'store']);
+    Route::post('dashboard', [DashboardController::class, 'dashboard']);
 });
 
 Route::group(['middleware' => 'api', 'prefix' => 'parent'], function ($router) {

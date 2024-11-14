@@ -73,7 +73,6 @@ return [
             'driver' => 'eloquent',
             'model' => env('AUTH_MODEL', App\Models\User::class),
         ],
-    
         'parent_of_students' => [
             'driver' => 'eloquent',
             'model' => \App\Models\ParentOfStudent::class,
