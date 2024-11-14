@@ -12,6 +12,7 @@ use App\Http\Resources\ParentOfStudentResources;
 use App\Http\Controllers\ClassOfStudentController;
 use App\Http\Controllers\ParentOfStudentController;
 use App\Http\Controllers\Api\ParentOfStudent\LoginController;
+use App\Http\Controllers\Api\ParentOfStudent\RegisterController;
 
 // Auth::routes(['register' => false]);
 
@@ -35,7 +36,8 @@ Route::group(['middleware' => 'api', 'prefix' => 'auth'], function ($router) {
 
 Route::group(['middleware' => 'api', 'prefix' => 'parentofstudents'], function ($router) {
     Route::post('login', [LoginController::class, 'index']);
-    // Route::post('register', [LoginController::class, ''])
+    Route::post('logout', [LoginController::class, 'logout']);
+    Route::post('register', [RegisterController::class, 'store']);
 });
 
 Route::group(['middleware' => 'api', 'prefix' => 'parent'], function ($router) {

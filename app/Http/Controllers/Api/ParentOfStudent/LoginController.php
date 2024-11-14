@@ -75,6 +75,7 @@ class LoginController extends Controller
         // respon success logout
         return response()->json([
             'success' => true,
+            'message' => 'Berhasil logout'
         ], 200);
     }
 }
