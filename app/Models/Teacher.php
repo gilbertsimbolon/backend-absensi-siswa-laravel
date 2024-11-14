@@ -24,22 +24,25 @@ class Teacher extends Model
         'date_born',
         'address',
         'foto',
-        // 'qr_code',
     ];
 
-    public function classofstudents(){
-        return $this->belongsTo(ClassOfStudent::class);
+    public function classofstudents()
+    {
+        return $this->hasMany(ClassOfStudent::class);
     }
 
-    public function extracurrirulars(){
-        return $this->belongsTo(Extracurricular::class);
-    }
-    
-    public function schedules(){
-        return $this->belongsTo(Schedule::class);
+    public function extracurriculars()
+    {
+        return $this->hasMany(Extracurricular::class, 'teachers_id');
     }
 
-    public function teachers_absences(){
-        return $this->belongsTo(TeacherAbsence::class);
+    public function schedules()
+    {
+        return $this->hasMany(Schedule::class);
+    }
+
+    public function teachers_absences()
+    {
+        return $this->hasMany(TeacherAbsence::class);
     }
 }

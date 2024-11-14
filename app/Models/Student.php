@@ -28,31 +28,30 @@ class Student extends Model
         'date_born',
         'address',
         'foto',
-        // 'qr_code'
     ];
 
-    public function student_absences(){
+    public function student_absences()
+    {
         return $this->hasMany(StudentAbsence::class, 'student_id');
     }
 
-    public function announcements(){
+    public function announcements()
+    {
         return $this->hasMany(Announcement::class);
     }
 
-    public function extracurrirullars(){
-        return $this->hasMany(Extracurricular::class);
+    public function extracurriculars()
+    {
+        return $this->belongsToMany(Extracurricular::class, 'students_id');
     }
 
-    public function parent_of_students(){
+    public function parent_of_students()
+    {
         return $this->belongsTo(ParentOfStudent::class, 'parent_id');
     }
 
-    public function class_of_students(){
+    public function class_of_students()
+    {
         return $this->belongsTo(ClassOfStudent::class, 'class_of_student_id');
     }
-    // protected function createdAt(): Attribute {
-    //     return Attribute::make (
-    //         get: fn ($value) => \Carbon\Carbon::parse($value)->translatedFormat()
-    //     );
-    // }
 }

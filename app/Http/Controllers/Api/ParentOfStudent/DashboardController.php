@@ -8,6 +8,7 @@ use Illuminate\Support\Carbon;
 use App\Models\ParentOfStudent;
 use App\Http\Controllers\Controller;
 use App\Models\Extracurricular;
+use Database\Seeders\ExtracurricularSeeder;
 use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
@@ -27,33 +28,8 @@ class DashboardController extends Controller
         $announcementsData = $announcementController->getAnnouncements();
 
         // Comment : Informasi Extracurricular
-        // $extracurricularsData = [];
-
-        // // Loop melalui setiap siswa dan ambil ekstrakurikuler yang dipilih
-        // foreach ($students as $student) {
-        //     // Ambil ekstrakurikuler yang dipilih oleh siswa
-        //     $extracurriculars = $student->extracurriculars;
-
-        //     // Loop melalui ekstrakurikuler dan buat array untuk dikembalikan
-        //     foreach ($extracurriculars as $extracurricular) {
-        //         $extracurricularsData[] = [
-        //             'activity' => $extracurricular->activity,
-        //             'days' => $extracurricular->days,
-        //             'time' => $extracurricular->time,
-        //             'teacher_id' => $extracurricular->teacher_id,
-        //         ];
-        //     }
-        // }
-
-        // // Jika Anda ingin memetakan data ke dalam format tertentu
-        // $extracurricularsData = collect($extracurricularsData)->map(function ($item) {
-        //     return [
-        //         'activity' => $item['activity'],
-        //         'days' => $item['days'],
-        //         'time' => $item['time'],
-        //         'teacher_id' => $item['teacher_id'],
-        //     ];
-        // });
+        $extracurricularsController = new ExtracurricularController();
+        $extracurricular = $extracurricularsController->getExtracurricular();
 
         // mengembalikan nilai json
         return response()->json([
@@ -63,7 +39,7 @@ class DashboardController extends Controller
             'greetings' => $greetings,
             'present' => $absence,
             'announcement' => $announcementsData,
-            // 'extracurriculars' => $extracurricularsData,
+            'extracurriculars' => $extracurricular,
         ]);
     }
 }

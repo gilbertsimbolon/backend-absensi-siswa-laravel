@@ -13,23 +13,26 @@ class Extracurricular extends Model
     use HasFactory;
 
     protected $fillable = [
-        'class_of_student_id',
-        'user_id',
-        'teacher_id',
+        'students_id',
         'days',
         'time',
         'activity',
+        'teacher_id',
+        'user_id'
     ];
 
-    public function students(){
-        return $this->hasMany(Student::class);
+    public function students()
+    {
+        return $this->belongsToMany(Student::class, 'students_id');
     }
 
-    public function users(){
-        return $this->belongsTo(User::class);
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function teachers(){
-        return $this->belongsTo(Teacher::class);
-    } 
+    public function teacher()
+    {
+        return $this->belongsTo(Teacher::class, 'teacher_id');
+    }
 }

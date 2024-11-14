@@ -10,16 +10,16 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Schedule extends Model
 {
-    use HasFactory;
+        use HasFactory;
 
-    protected $fillable = [
-        'class_of_student_id',
-        'user_id',
-        'teacher_id',
-        'days',
-        'time',
-        'subject',
-    ];
+        protected $fillable = [
+            'class_of_student_id',
+            'user_id',
+            'teacher_id',
+            'days',
+            'time',
+            'subject',
+        ];
 
     // Comment: Relasi Many to One Schedule ke ClassOfStudent
     public function class_of_students(){
